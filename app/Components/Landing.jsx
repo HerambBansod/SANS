@@ -93,7 +93,8 @@ export default function Landing() {
                         zIndex: 0,
                     }}
                 >
-                    <source src="/Landing.mp4" type="video/mp4" />
+                    {/* <source src="/Landing.mp4" type="video/mp4" /> */}
+                    <source src="/Landing.webm" type="video/webm" />
                 </video>
 
                 <div
