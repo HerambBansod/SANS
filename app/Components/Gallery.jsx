@@ -1,94 +1,239 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+
+const IMAGES = [
+    "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80",
+    "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=600&q=80",
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+    "https://images.unsplash.com/photo-1520697222865-c5b0e1dba8b4?w=600&q=80",
+    "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=600&q=80",
+    "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80",
+    "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=600&q=80",
+    "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80",
+    "https://images.unsplash.com/photo-1520697222865-c5b0e1dba8b4?w=600&q=80",
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+];
+
+// tall pattern per column (desktop 5-col)
+const TALL_PATTERN = [
+    [false, true],
+    [true, false],
+    [false, true],
+    [false, false],
+    [true, false],
+];
 
 export default function Gallery() {
     const ref = useRef(null);
+    const [isDesktop, setIsDesktop] = useState(true);
+    const [isTablet, setIsTablet] = useState(false);
+
+    useEffect(() => {
+        const check = () => {
+            setIsDesktop(window.innerWidth >= 1024);
+            setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+        };
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
 
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"],
     });
 
-    // Parallax speeds
-    const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
-    const y2 = useTransform(scrollYProgress, [0, 1], [0, 180]);
-    const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-    const y4 = useTransform(scrollYProgress, [0, 1], [0, 220]);
-    const y5 = useTransform(scrollYProgress, [0, 1], [0, -120]);
+    const y1 = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? -200 : 0]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? 180 : 0]);
+    const y3 = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? -150 : 0]);
+    const y4 = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? 220 : 0]);
+    const y5 = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? -120 : 0]);
 
-    return (
-        <section
-            ref={ref}
-            className="w-full min-h-[150vh] bg-[#FAF9F6] flex justify-center items-center p-2 overflow-hidden "
-        >
-            <div className="w-full max-w-[1400px] bg-[#E9DCC9] rounded-3xl p-10 shadow-[0_25px_70px_rgba(0,0,0,0.15)]">
-                <div className="flex flex-col items-center text-center mb-20">
+    const ys = [y1, y2, y3, y4, y5];
 
-                    <p className="text-sm tracking-[0.3em] uppercase text-black/60 mb-4">
-                        Moments of Creativity
-                    </p>
+    // Build columns based on breakpoint
+    const getColumns = () => {
+        if (isDesktop) return 5;
+        if (isTablet) return 3;
+        return 2;
+    };
 
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight max-w-3xl">
-                        Where Little Hands Paint <br className="hidden sm:block" />
-                        Big Beautiful Dreams
-                    </h2>
+    const cols = getColumns();
 
-                    <p className="text-black/70 text-base sm:text-lg mt-6 max-w-xl">
-                        A glimpse into the imagination, joy, and artistic journeys
-                        created every day at SANS Art Studio.
-                    </p>
-
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-
-                    {/* Column 1 */}
-                    <motion.div style={{ y: y1 }} className="flex flex-col gap-6">
-                        <ImageCard img="https://images.unsplash.com/photo-1513364776144-60967b0f800f" />
-                        <ImageCard img="https://images.unsplash.com/photo-1492724441997-5dc865305da7" tall />
-                    </motion.div>
-
-                    {/* Column 2 */}
-                    <motion.div style={{ y: y2 }} className="flex flex-col gap-6">
-                        <ImageCard img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" tall />
-                        <ImageCard img="https://images.unsplash.com/photo-1520697222865-c5b0e1dba8b4" />
-                    </motion.div>
-
-                    {/* Column 3 */}
-                    <motion.div style={{ y: y3 }} className="flex flex-col gap-6">
-                        <ImageCard img="https://images.unsplash.com/photo-1504198453319-5ce911bafcde" />
-                        <ImageCard img="https://images.unsplash.com/photo-1519681393784-d120267933ba" tall />
-                    </motion.div>
-
-                    {/* Column 4 */}
-                    <motion.div style={{ y: y4 }} className="flex flex-col gap-6">
-                        <ImageCard img="https://images.unsplash.com/photo-1492724441997-5dc865305da7" />
-                        <ImageCard img="https://images.unsplash.com/photo-1513364776144-60967b0f800f" />
-                    </motion.div>
-
-                    {/* Column 5 */}
-                    <motion.div style={{ y: y5 }} className="flex flex-col gap-6">
-                        <ImageCard img="https://images.unsplash.com/photo-1520697222865-c5b0e1dba8b4" tall />
-                        <ImageCard img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
-                    </motion.div>
-
-                </div>
-
-            </div>
-        </section>
+    // Distribute images into columns
+    const columns = Array.from({ length: cols }, (_, i) =>
+        IMAGES.filter((_, idx) => idx % cols === i)
     );
-}
 
-function ImageCard({ img, tall }) {
     return (
-        <div className={`relative ${tall ? "h-[320px]" : "h-[220px]"} rounded-2xl overflow-hidden group`}>
-            <div
-                className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url(${img})` }}
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
+        <div style={{ background: "#F7F3EE", fontFamily: "'DM Sans', sans-serif", overflowX: "hidden" }}>
+            <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&display=swap');
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .grain {
+          position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.04;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .ink-blob {
+          border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+          animation: morph 9s ease-in-out infinite alternate;
+        }
+        @keyframes morph {
+          0%   { border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%; }
+          50%  { border-radius: 40% 60% 30% 70% / 70% 40% 60% 50%; }
+          100% { border-radius: 55% 45% 65% 35% / 45% 65% 35% 65%; }
+        }
+
+        .img-card {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+        .img-card img {
+          width: 100%; height: 100%;
+          object-fit: cover; display: block;
+          transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform;
+        }
+        .img-card:hover img { transform: scale(1.08); }
+        .img-card .dim {
+          position: absolute; inset: 0;
+          background: rgba(0,0,0,0.15);
+          transition: background 0.3s;
+        }
+        .img-card:hover .dim { background: rgba(0,0,0,0.05); }
+      `}</style>
+
+            <div className="grain" />
+
+            {/* Ambient blobs */}
+            <div className="ink-blob" style={{
+                position: "fixed", bottom: -100, left: -100, zIndex: 0,
+                width: 380, height: 380,
+                background: "rgba(233,220,201,0.28)", pointerEvents: "none",
+            }} />
+            <div className="ink-blob" style={{
+                position: "fixed", top: 60, right: -80, zIndex: 0,
+                width: 260, height: 260,
+                background: "rgba(201,218,204,0.2)", pointerEvents: "none",
+                animationDelay: "3.5s",
+            }} />
+
+            {/* ── SECTION ── */}
+            <section
+                ref={ref}
+                style={{
+                    width: "100%",
+                    minHeight: isDesktop ? "150vh" : "auto",
+                    padding: isDesktop ? "60px 24px 100px" : "48px 16px 64px",
+                    position: "relative", zIndex: 1,
+                    overflow: "hidden",
+                }}
+            >
+                <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+
+                    {/* ── HEADING ── */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        style={{
+                            display: "flex", flexDirection: "column",
+                            alignItems: "center", textAlign: "center",
+                            marginBottom: isDesktop ? 72 : 40,
+                        }}
+                    >
+                        <p style={{
+                            fontSize: "0.68rem", fontWeight: 600, color: "#8B6A4A",
+                            letterSpacing: "0.14em", textTransform: "uppercase",
+                            marginBottom: 16,
+                        }}>
+                            Moments of Creativity
+                        </p>
+
+                        <h2 style={{
+                            fontFamily: "'Playfair Display', serif",
+                            fontSize: "clamp(1.9rem, 5vw, 3.75rem)",
+                            fontWeight: 800, color: "#1a1a1a",
+                            lineHeight: 1.08, letterSpacing: "-0.025em",
+                            maxWidth: 680, marginBottom: 18,
+                        }}>
+                            Where little hands paint{" "}
+                            <em style={{ fontStyle: "italic", color: "#8B6A4A" }}>
+                                big beautiful dreams.
+                            </em>
+                        </h2>
+
+                        <p style={{
+                            fontSize: "0.92rem", color: "rgba(0,0,0,0.46)",
+                            lineHeight: 1.8, fontWeight: 300,
+                            maxWidth: 420, padding: "0 8px",
+                        }}>
+                            A glimpse into the imagination, joy, and artistic journeys
+                            created every day at Sanz Art Studio.
+                        </p>
+                    </motion.div>
+
+                    {/* ── GRID ── */}
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: `repeat(${cols}, 1fr)`,
+                        gap: isDesktop ? 16 : 10,
+                        alignItems: "start",
+                    }}>
+                        {columns.map((colImgs, colIdx) => (
+                            <motion.div
+                                key={colIdx}
+                                style={{
+                                    y: isDesktop ? ys[colIdx] : 0,
+                                    display: "flex", flexDirection: "column",
+                                    gap: isDesktop ? 16 : 10,
+                                }}
+                            >
+                                {colImgs.map((img, rowIdx) => {
+                                    // Alternate tall/short within each column
+                                    const isTall = isDesktop
+                                        ? (TALL_PATTERN[colIdx]?.[rowIdx] ?? false)
+                                        : rowIdx % 2 === 0;
+
+                                    const height = isDesktop
+                                        ? (isTall ? 320 : 220)
+                                        : isTablet
+                                            ? (isTall ? 260 : 180)
+                                            : (isTall ? 200 : 140);
+
+                                    return (
+                                        <motion.div
+                                            key={img + rowIdx}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, margin: "-40px" }}
+                                            transition={{
+                                                delay: colIdx * 0.08 + rowIdx * 0.05,
+                                                duration: 0.6,
+                                                ease: [0.22, 1, 0.36, 1],
+                                            }}
+                                        >
+                                            <div className="img-card" style={{ height }}>
+                                                <img src={img} alt="Studio artwork" />
+                                                <div className="dim" />
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </motion.div>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
         </div>
     );
 }
