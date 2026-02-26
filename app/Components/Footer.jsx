@@ -2,18 +2,19 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Palette, Instagram, Facebook, Youtube, MapPin, Mail, Phone } from "lucide-react";
+import { Palette, Instagram, Facebook, Youtube, MapPin, Mail, Phone, MessageCircle } from "lucide-react";
 
 const links = {
     Explore: ["About Us", "Our Classes", "Gallery", "Why Sanz"],
     Classes: ["Painting", "Paper Craft", "Creative Mix", "Holiday Camps"],
-    Contact: ["Book a Trial", "Find Us", "WhatsApp Us", "Instagram"],
+    Contact: ["Book a Trial", "Find Us", "Instagram"],
 };
 
 const socials = [
-    { icon: Instagram, href: "#", title: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/sanz_artstudio/", title: "Instagram" },
     { icon: Facebook, href: "#", title: "Facebook" },
     { icon: Youtube, href: "#", title: "YouTube" },
+    { icon: MessageCircle, href: "https://wa.me/919172928238", title: "WhatsApp" },
 ];
 
 export default function Footer() {
@@ -122,7 +123,7 @@ export default function Footer() {
                     position: "relative",
                 }}
             >
-                {/* Top accent line — warm gradient */}
+           
                 <div style={{
                     width: "100%", height: 1,
                     background: "linear-gradient(to right, transparent, rgba(233,220,201,0.3), rgba(139,106,74,0.4), rgba(233,220,201,0.3), transparent)",
@@ -131,7 +132,7 @@ export default function Footer() {
                 {/* Main content */}
                 <div style={{ maxWidth: 1280, margin: "0 auto", padding: "72px 40px 32px" }}>
 
-                    {/* ── TOP ROW ── */}
+                  
                     <div className="footer-top">
 
                         {/* Brand column */}
@@ -170,9 +171,9 @@ export default function Footer() {
                             {/* Contact snippets */}
                             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
                                 {[
-                                    { icon: MapPin, text: "Pimpri-Chinchwad, Pune" },
-                                    { icon: Mail, text: "hello@sanzartstudio.com" },
-                                    { icon: Phone, text: "+91 98765 43210" },
+                                    { icon: MapPin, text: "Near Sant Namdev School, Gultekdi , Maharshi Nagar, Pune 411037" },
+                                    { icon: Mail, text: "sanzartstudio.official@gmail.com" },
+                                    { icon: Phone, text: "+91 91729 28238" },
                                 ].map(({ icon: Icon, text }) => (
                                     <div key={text} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                         <Icon size={12} color="rgba(233,220,201,0.5)" />
@@ -221,7 +222,7 @@ export default function Footer() {
                                     <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
                                         {items.map((item) => (
                                             <li key={item}>
-                                                <a href="#" className="footer-link">{item}</a>
+                                                <a href="https://www.instagram.com/sanz_artstudio/" className="footer-link">{item}</a>
                                             </li>
                                         ))}
                                     </ul>
@@ -233,7 +234,6 @@ export default function Footer() {
                     {/* Divider */}
                     <div style={{ width: "100%", height: 1, background: "rgba(255,255,255,0.06)", marginBottom: 28 }} />
 
-                    {/* ── BOTTOM ROW ── */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -261,7 +261,7 @@ export default function Footer() {
                     </motion.div>
                 </div>
 
-                {/* ── Giant wordmark parallax ── */}
+
                 <div style={{
                     position: "relative", overflow: "hidden",
                     height: "clamp(80px, 14vw, 160px)",

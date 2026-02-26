@@ -4,19 +4,19 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const IMAGES = [
-    "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80",
-    "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=600&q=80",
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
-    "https://images.unsplash.com/photo-1520697222865-c5b0e1dba8b4?w=600&q=80",
-    "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=600&q=80",
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80",
-    "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=600&q=80",
-    "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80",
-    "https://images.unsplash.com/photo-1520697222865-c5b0e1dba8b4?w=600&q=80",
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",
+    "./kid1.webp",
+    "./kid2.webp",
+    "./kid3.webp",
+    "./kid4.webp",
+    "./kid5.webp",
+    "./kid6.webp",
+    "./kid7.webp",
+    "./kid8.webp",
+    "./img1.webp",
+    "./img2.webp",
 ];
 
-// tall pattern per column (desktop 5-col)
+
 const TALL_PATTERN = [
     [false, true],
     [true, false],
@@ -198,7 +198,7 @@ export default function Gallery() {
                                 }}
                             >
                                 {colImgs.map((img, rowIdx) => {
-                                    // Alternate tall/short within each column
+                                    
                                     const isTall = isDesktop
                                         ? (TALL_PATTERN[colIdx]?.[rowIdx] ?? false)
                                         : rowIdx % 2 === 0;

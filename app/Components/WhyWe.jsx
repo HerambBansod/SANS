@@ -154,7 +154,7 @@ export default function WhyWe() {
                         style={{ height: 500 }}
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80"
+                            src="./Creative.webp"
                             alt="Creative Drawing & Painting"
                         />
                         <div className="overlay" />
@@ -183,7 +183,7 @@ export default function WhyWe() {
                             style={{ height: 242 }}
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80"
+                                src="./DIY.webp"
                                 alt="Craft & DIY Workshops"
                             />
                             <div className="overlay" />
@@ -203,7 +203,7 @@ export default function WhyWe() {
                             style={{ height: 242 }}
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800&q=80"
+                                src="./Confidence.webp"
                                 alt="Confidence Through Creativity"
                             />
                             <div className="overlay" />

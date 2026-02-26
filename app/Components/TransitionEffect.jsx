@@ -5,46 +5,46 @@ import { useRef } from "react";
 
 const leftImages = [
     {
-        src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80",
+        src: "./img1.webp",
         style: { top: "2%", left: "1%", width: 110, height: 140, rotate: -6 },
     },
     {
-        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
+        src: "./img2.webp",
         style: { top: "28%", left: "3%", width: 95, height: 120, rotate: 4 },
     },
     {
-        src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80",
+        src: "./img4.jpeg",
         style: { top: "58%", left: "1%", width: 100, height: 128, rotate: -5 },
     },
     {
-        src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
+        src: "./img5.jpeg",
         style: { top: "5%", left: "16%", width: 88, height: 112, rotate: 5 },
     },
     {
-        src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&q=80",
+        src: "./img6.jpeg",
         style: { top: "38%", left: "14%", width: 82, height: 105, rotate: -3 },
     },
 ];
 
 const rightImages = [
     {
-        src: "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=300&q=80",
+        src: "./img4.jpeg",
         style: { top: "2%", right: "1%", width: 110, height: 140, rotate: 6 },
     },
     {
-        src: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&q=80",
+        src: "./img6.jpeg",
         style: { top: "28%", right: "3%", width: 95, height: 120, rotate: -4 },
     },
     {
-        src: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=300&q=80",
+        src: "./img5.jpeg",
         style: { top: "58%", right: "1%", width: 100, height: 128, rotate: 5 },
     },
     {
-        src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80",
+        src: "./img2.webp",
         style: { top: "5%", right: "16%", width: 88, height: 112, rotate: -5 },
     },
     {
-        src: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=300&q=80",
+        src: "./img1.webp",
         style: { top: "38%", right: "14%", width: 82, height: 105, rotate: 3 },
     },
 ];
@@ -240,7 +240,7 @@ export default function TestimonialTransition() {
                         </em>
                     </motion.h2>
 
-                    {/* Subtext */}
+
                     <motion.p
                         initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -256,7 +256,7 @@ export default function TestimonialTransition() {
                         nurture artistic skills, and build lifelong creative confidence.
                     </motion.p>
 
-                    {/* Stats row */}
+
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -273,9 +273,9 @@ export default function TestimonialTransition() {
                         }}
                     >
                         {[
-                            { value: "500+", label: "Happy Kids" },
+                            { value: "100+", label: "Happy Kids" },
                             { value: "98%", label: "Parent Approval" },
-                            { value: "8 yrs", label: "Of Excellence" },
+                            { value: "5 yrs", label: "Of Excellence" },
                         ].map(({ value, label }) => (
                             <div key={label} style={{ textAlign: "center" }}>
                                 <div style={{

@@ -191,13 +191,13 @@ export default function ContactSection() {
                         }}
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&q=85"
+                            src="./img3.jpg"
                             alt="Art Studio"
                             style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", display: "block" }}
                         />
                     </motion.div>
 
-                    {/* Floating info pill */}
+                 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -226,7 +226,7 @@ export default function ContactSection() {
                     </motion.div>
                 </div>
 
-                {/* ── RIGHT — form ── */}
+                
                 <div className="contact-right">
                     <motion.div
                         initial={{ opacity: 0, x: 40 }}
@@ -235,7 +235,7 @@ export default function ContactSection() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         style={{ width: "100%", maxWidth: 420 }}
                     >
-                        {/* Label */}
+                        
                         <p style={{
                             fontSize: "0.68rem", fontWeight: 600, color: "#8B6A4A",
                             letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 14,
@@ -368,7 +368,7 @@ export default function ContactSection() {
                                             {submitted ? "Sent ✓" : "Submit"}
                                         </span>
 
-                                        {/* hover text color override via inline trick */}
+                                       
                                         <style>{`.btn-label:hover { color: #fff !important; }`}</style>
                                     </motion.button>
 
@@ -387,9 +387,9 @@ export default function ContactSection() {
                             display: "flex", flexDirection: "column", gap: 12,
                         }}>
                             {[
-                                { icon: Mail, text: "hello@sanzartstudio.com" },
-                                { icon: Phone, text: "+91 98765 43210" },
-                                { icon: MapPin, text: "Pimpri-Chinchwad, Pune" },
+                                { icon: Mail, text: "sanzartstudio.official@gmail.com" },
+                                { icon: Phone, text: "+91 91729 28238" },
+                                { icon: MapPin, text: "Near Sant Namdev School, Gultekdi , Maharshi Nagar, Pune 411037" },
                             ].map(({ icon: Icon, text }) => (
                                 <div key={text} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                                     <div style={{

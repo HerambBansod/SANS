@@ -81,10 +81,9 @@ export default function AboutUs() {
         }
       `}</style>
 
-            {/* Grain */}
             <div className="grain" />
 
-            {/* Ambient blobs */}
+          
             <div className="ink-blob" style={{
                 position: "fixed", bottom: -100, left: -100, zIndex: 0,
                 width: 380, height: 380,
@@ -99,10 +98,9 @@ export default function AboutUs() {
 
 
 
-            {/* ── PAGE CONTENT ── */}
+         
             <main style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 24px 80px" }}>
 
-                {/* Page label */}
                 <motion.div {...fadeUp(0.1)} style={{ marginBottom: 56 }}>
                     <p style={{
                         fontSize: "0.68rem", fontWeight: 600, color: "#8B6A4A",
@@ -120,7 +118,7 @@ export default function AboutUs() {
                     </h1>
                 </motion.div>
 
-                {/* ── BENTO GRID ── */}
+              
                 <div
                     className="bento-grid"
                     style={{
@@ -131,7 +129,7 @@ export default function AboutUs() {
                     }}
                 >
 
-                    {/* 1 — Main about text (col-span-2, row-span-2) */}
+                    
                     <motion.div
                         {...fadeUp(0.15)}
                         className="span2"
@@ -143,7 +141,7 @@ export default function AboutUs() {
                             position: "relative", overflow: "hidden",
                         }}
                     >
-                        {/* decorative circle */}
+                        
                         <div style={{
                             position: "absolute", top: -40, right: -40,
                             width: 160, height: 160,
@@ -179,7 +177,7 @@ export default function AboutUs() {
                         </p>
                     </motion.div>
 
-                    {/* 2 — Photo */}
+                  
                     <motion.div
                         {...fadeUp(0.2)}
                         style={{
@@ -189,7 +187,7 @@ export default function AboutUs() {
                         }}
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80"
+                            src="./enroll.webp"
                             alt="Kids painting"
                             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                         />
@@ -209,7 +207,7 @@ export default function AboutUs() {
                         </div>
                     </motion.div>
 
-                    {/* 3 — Creative Learning */}
+                    
                     <motion.div {...fadeUp(0.25)} className="card">
                         <div style={{
                             width: 44, height: 44, background: "#1a1a1a",
@@ -229,7 +227,6 @@ export default function AboutUs() {
                         </div>
                     </motion.div>
 
-                    {/* 4 — Skill Development */}
                     <motion.div {...fadeUp(0.3)} className="card">
                         <div style={{
                             width: 44, height: 44, background: "#1a1a1a",
@@ -249,7 +246,6 @@ export default function AboutUs() {
                         </div>
                     </motion.div>
 
-                    {/* 5 — Safe Environment (col-span-2, dark) */}
                     <motion.div
                         {...fadeUp(0.35)}
                         className="span2"
@@ -262,7 +258,6 @@ export default function AboutUs() {
                             flexWrap: "wrap", position: "relative", overflow: "hidden",
                         }}
                     >
-                        {/* blob inside dark card */}
                         <div className="ink-blob" style={{
                             position: "absolute", top: -50, right: -50,
                             width: 180, height: 180,
@@ -296,8 +291,7 @@ export default function AboutUs() {
                             Book a Free Trial <ArrowRight size={15} />
                         </button>
                     </motion.div>
-
-                    {/* 6 — Stat card */}
+                    
                     <motion.div
                         {...fadeUp(0.4)}
                         style={{
@@ -314,12 +308,12 @@ export default function AboutUs() {
                             background: "rgba(139,106,74,0.18)", pointerEvents: "none",
                         }} />
                         <p style={{ fontSize: "0.68rem", fontWeight: 600, color: "#8B6A4A", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                            Since 2017
+                            Since 2021
                         </p>
                         <p style={{
                             fontFamily: "'Playfair Display', serif",
                             fontSize: "3rem", fontWeight: 800, color: "#1a1a1a", lineHeight: 1,
-                        }}>500+</p>
+                        }}>100+</p>
                         <p style={{ fontSize: "0.85rem", color: "rgba(0,0,0,0.5)", fontWeight: 300 }}>
                             Happy young artists and counting
                         </p>
